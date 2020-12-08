@@ -8,6 +8,7 @@ import 'package:chat_app/views/search.dart';
 import 'package:chat_app/widgets/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ChatRoom extends StatefulWidget {
   @override
@@ -72,10 +73,8 @@ class _ChatRoomState extends State<ChatRoom> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          "assets/images/logo.png",
-          height: 40,
-        ),
+        backgroundColor: Colors.black54,
+        title: Text("Let's Chat",style: GoogleFonts.lato(fontSize: 20,color: Colors.deepOrangeAccent),),
         elevation: 0.0,
         centerTitle: false,
         actions: [
