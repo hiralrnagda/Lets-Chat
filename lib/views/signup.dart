@@ -131,8 +131,8 @@ class _SignupState extends State<Signup> {
                           padding: EdgeInsets.symmetric(vertical: 16),
                           decoration: BoxDecoration(
                               gradient: LinearGradient(colors: [
-                                const Color(0xff007EF4),
-                                const Color(0xff2A75BC)
+                                Colors.yellowAccent,
+                                Colors.orangeAccent
                               ]),
                               borderRadius: BorderRadius.circular(30)),
                           child: Text(

@@ -35,11 +35,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          primaryColor: Color(0xff145C9E),
-          scaffoldBackgroundColor: Color(0xff1F1F1F),
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity),
       home: userIsLoggedIn != null
           ? userIsLoggedIn
               ? ChatRoom()
