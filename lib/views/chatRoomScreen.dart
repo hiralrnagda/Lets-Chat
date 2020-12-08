@@ -72,6 +72,7 @@ class _ChatRoomState extends State<ChatRoom> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black54,
       appBar: AppBar(
         backgroundColor: Colors.black54,
         title: Text("Let's Chat",style: GoogleFonts.lato(fontSize: 20,color: Colors.deepOrangeAccent),),
@@ -92,6 +93,7 @@ class _ChatRoomState extends State<ChatRoom> {
       ),
       body: Container(child: chatRoomList()),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.orangeAccent,
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => SearchScreen()));
@@ -124,13 +126,13 @@ class ChatRoomTile extends StatelessWidget {
                 builder: (context) => ConversationScreen(chatRoomId)));
       },
       child: Container(
-        color: Colors.black26,
+        color: Colors.orangeAccent.shade100,
         padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         child: Row(
           children: [
             CircleAvatar(
               radius: 20,
-              backgroundColor: Colors.blue.shade200,
+              backgroundColor: Colors.orangeAccent,
               child: Text(
                 "${userName.substring(0, 1).toUpperCase()}",
                 textAlign: TextAlign.center,

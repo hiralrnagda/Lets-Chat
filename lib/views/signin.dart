@@ -59,6 +59,7 @@ class _SigninState extends State<Signin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black54,
       appBar: appBarMain(context),
       body: SingleChildScrollView(
         child: Container(

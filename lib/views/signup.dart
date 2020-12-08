@@ -64,6 +64,7 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black54,
       appBar: appBarMain(context),
       body: isLoading
           ? Container(
@@ -161,7 +162,7 @@ class _SignupState extends State<Signup> {
                               child: Text(
                                 "Sign In Now",
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     fontSize: 17,
                                     decoration: TextDecoration.underline),
                               ),

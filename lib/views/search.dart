@@ -76,6 +76,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget searchTile({String userName, String userEmail}) {
     return SingleChildScrollView(
       child: Container(
+        color: Colors.orangeAccent.shade100,
         padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         child: Row(
           children: [
@@ -99,7 +100,7 @@ class _SearchScreenState extends State<SearchScreen> {
               },
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: Colors.orangeAccent,
                     borderRadius: BorderRadius.circular(30)),
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: Text(
@@ -122,6 +123,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black54,
       appBar: appBarMain(context),
       body: Container(
         child: Column(
@@ -150,7 +152,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         width: 40,
                         decoration: BoxDecoration(
                             gradient: LinearGradient(colors: [
-                              Colors.yellowAccent,
+                              Colors.orange,
                               Colors.orangeAccent
                             ]),
                             borderRadius: BorderRadius.circular(40)),

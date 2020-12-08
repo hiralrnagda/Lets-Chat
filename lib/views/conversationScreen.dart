@@ -69,6 +69,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black54,
       appBar: appBarMain(context),
       body: Container(
         child: Stack(
@@ -104,7 +105,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                           width: 40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(40),
-                              color: Colors.black,),
+                              color: Colors.orange,),
                           
                           padding: EdgeInsets.all(12),
                           child: Image.asset(
@@ -147,7 +148,7 @@ class MessageTile extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: isSendByMe
-                ? [Colors.yellowAccent, Colors.orangeAccent]
+                ? [Colors.orangeAccent, Colors.orangeAccent]
                 : [const Color(0x1AFFFFFF), const Color(0x1AFFFFFF)],
           ),
           borderRadius: isSendByMe
