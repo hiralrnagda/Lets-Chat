@@ -116,7 +116,7 @@ class _SigninState extends State<Signin> {
                     padding: EdgeInsets.symmetric(vertical: 16),
                     decoration: BoxDecoration(
                         gradient: LinearGradient(colors: [
-                          Colors.yellowAccent,
+                          Colors.orange,
                           Colors.orangeAccent
                         ]),
                         borderRadius: BorderRadius.circular(30)),

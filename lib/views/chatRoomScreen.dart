@@ -136,7 +136,7 @@ class ChatRoomTile extends StatelessWidget {
               child: Text(
                 "${userName.substring(0, 1).toUpperCase()}",
                 textAlign: TextAlign.center,
-                style: simpleTextStyle(),
+                style: TextStyle(color: Colors.black, fontSize: 16),
               ),
             ),
             SizedBox(
@@ -145,7 +145,7 @@ class ChatRoomTile extends StatelessWidget {
             Text(
               userName,
               textAlign: TextAlign.start,
-              style: TextStyle(color: Colors.white, fontSize: 16),
+              style: TextStyle(color: Colors.black, fontSize: 16),
             ),
             SizedBox(
               width: 100,
@@ -153,7 +153,7 @@ class ChatRoomTile extends StatelessWidget {
             Text(
               d,
               textAlign: TextAlign.start,
-              style: TextStyle(color: Colors.white, fontSize: 16),
+              style: TextStyle(color: Colors.black, fontSize: 16),
             ),
 
           ],
