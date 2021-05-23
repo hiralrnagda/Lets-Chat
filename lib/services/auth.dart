@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:chat_app/modal/user.dart' as s;
-import 'package:geolocator/geolocator.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthMethods {
   FirebaseAuth authc = FirebaseAuth.instance;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
 
   s.User _userFromFirebaseUser(var user) {
     return user != null ? s.User(userId: user.uid) : null;
@@ -48,14 +49,25 @@ class AuthMethods {
     }
   }
 
-  Future getUserLocation()async{
-    try{
-      LocationPermission permission = await Geolocator.checkPermission();
-    }
-    catch(e){
-      LocationPermission permission = await Geolocator.requestPermission();
-    }
-    
+  Future signInWithGoogle() async {
+    try {
+      GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+      final AuthCredential authCredential = GoogleAuthProvider.credential(
+          accessToken: googleSignInAuthentication.accessToken,
+          idToken: googleSignInAuthentication.idToken);
 
+      final UserCredential userCredential =
+          await authc.signInWithCredential(authCredential);
+      User user = userCredential.user;
+      return _userFromFirebaseUser(user);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future signOutWithGoogle() async {
+    return googleSignIn.signOut();
   }
 }

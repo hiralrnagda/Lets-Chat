@@ -55,6 +55,5 @@ class DatabaseMethods {
         .where("users", arrayContains: userName)
         .snapshots();
   }
-
  
 }

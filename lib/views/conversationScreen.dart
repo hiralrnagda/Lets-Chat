@@ -1,9 +1,8 @@
 import 'package:chat_app/helper/constants.dart';
 import 'package:chat_app/services/database.dart';
-import 'package:chat_app/widgets/widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ConversationScreen extends StatefulWidget {
   final String chatRoomId;
@@ -18,9 +17,6 @@ class _ConversationScreenState extends State<ConversationScreen> {
   DatabaseMethods databaseMethods = new DatabaseMethods();
   TextEditingController messageController = new TextEditingController();
   Stream<QuerySnapshot> chatMessageStream;
- 
-  double distanceInMeters = Geolocator.distanceBetween(52.2165157, 6.9437819, 52.3546274, 4.8285838);
-  
 
   Widget chatMessageList() {
     return StreamBuilder(
@@ -46,7 +42,6 @@ class _ConversationScreenState extends State<ConversationScreen> {
         "message": messageController.text,
         "sendBy": Constants.myName,
         "time": DateTime.now().millisecondsSinceEpoch,
-        "location" : distanceInMeters
       };
 
       databaseMethods.addConversationMessages(widget.chatRoomId, messageMap);
@@ -70,7 +65,15 @@ class _ConversationScreenState extends State<ConversationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black54,
-      appBar: appBarMain(context),
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.black54,
+        title: Text(
+          "Firebook",
+          style: GoogleFonts.raleway(fontSize: 20, color: Colors.lightBlue
+        ),
+      ),
+      ),
       body: Container(
         child: Stack(
           children: [
@@ -104,9 +107,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
                           height: 40,
                           width: 40,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(40),
-                              color: Colors.orange,),
-                          
+                            borderRadius: BorderRadius.circular(40),
+                            color: Colors.lightBlue,
+                          ),
                           padding: EdgeInsets.all(12),
                           child: Image.asset(
                             "assets/images/send.png",
@@ -148,7 +151,7 @@ class MessageTile extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: isSendByMe
-                ? [Colors.orangeAccent,Colors.deepOrange]
+                ? [Colors.orangeAccent, Colors.deepOrange]
                 : [Colors.orangeAccent.shade100, Colors.deepOrange.shade100],
           ),
           borderRadius: isSendByMe
@@ -160,7 +163,7 @@ class MessageTile extends StatelessWidget {
                   topLeft: Radius.circular(23),
                   topRight: Radius.circular(23),
                   bottomLeft: Radius.circular(23)),
-        ),       
+        ),
         child: Text(
           message,
           textAlign: TextAlign.start,

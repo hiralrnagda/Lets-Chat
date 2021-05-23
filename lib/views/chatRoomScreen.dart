@@ -5,9 +5,7 @@ import 'package:chat_app/services/auth.dart';
 import 'package:chat_app/services/database.dart';
 import 'package:chat_app/views/conversationScreen.dart';
 import 'package:chat_app/views/search.dart';
-import 'package:chat_app/widgets/widget.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ChatRoom extends StatefulWidget {
@@ -20,8 +18,6 @@ class _ChatRoomState extends State<ChatRoom> {
   DatabaseMethods databaseMethods = new DatabaseMethods();
   Stream chatRoomsStream;
 
- 
-
   Widget chatRoomList() {
     return StreamBuilder(
       stream: chatRoomsStream,
@@ -31,7 +27,7 @@ class _ChatRoomState extends State<ChatRoom> {
                 itemBuilder: (context, index) {
                   return SingleChildScrollView(
                     child: Container(
-                      margin: EdgeInsets.only(bottom: 5,top:5),
+                      margin: EdgeInsets.only(bottom: 5, top: 5),
                       child: ChatRoomTile(
                           snapshot.data.documents[index]
                               .data()["chatroomid"]
@@ -53,7 +49,6 @@ class _ChatRoomState extends State<ChatRoom> {
   @override
   void initState() {
     getUserInfo();
-    
     super.initState();
   }
 
@@ -64,9 +59,7 @@ class _ChatRoomState extends State<ChatRoom> {
         chatRoomsStream = value;
       });
     });
-    setState(() {
-      
-    });
+    setState(() {});
   }
 
   @override
@@ -74,10 +67,13 @@ class _ChatRoomState extends State<ChatRoom> {
     return Scaffold(
       backgroundColor: Colors.black54,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.black54,
-        title: Text("Let's Chat",style: GoogleFonts.lato(fontSize: 20,color: Colors.deepOrangeAccent),),
+        title: Text(
+          "Firebook",
+          style: GoogleFonts.raleway(fontSize: 20, color: Colors.lightBlueAccent),
+        ),
         elevation: 0.0,
-        centerTitle: false,
         actions: [
           GestureDetector(
             onTap: () {
@@ -93,7 +89,7 @@ class _ChatRoomState extends State<ChatRoom> {
       ),
       body: Container(child: chatRoomList()),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: Colors.lightBlue,
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => SearchScreen()));
@@ -105,19 +101,11 @@ class _ChatRoomState extends State<ChatRoom> {
 }
 
 class ChatRoomTile extends StatelessWidget {
-  
   final String userName;
   final String chatRoomId;
   ChatRoomTile(this.userName, this.chatRoomId);
   @override
   Widget build(BuildContext context) {
-  
-    double distanceInMeters = Geolocator.distanceBetween(52.2165157, 6.9437819, 52.3546274, 4.8285838);
-    double distanceInKm = distanceInMeters/1000;
-    String x = distanceInKm.truncate().toString();
-    String d = x + " Km apart";
-
-    
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -132,7 +120,7 @@ class ChatRoomTile extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 20,
-              backgroundColor: Colors.orangeAccent,
+              backgroundColor: Colors.lightBlue,
               child: Text(
                 "${userName.substring(0, 1).toUpperCase()}",
                 textAlign: TextAlign.center,
@@ -150,12 +138,6 @@ class ChatRoomTile extends StatelessWidget {
             SizedBox(
               width: 100,
             ),
-            Text(
-              d,
-              textAlign: TextAlign.start,
-              style: TextStyle(color: Colors.black, fontSize: 16),
-            ),
-
           ],
         ),
       ),

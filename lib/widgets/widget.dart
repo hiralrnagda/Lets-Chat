@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 Widget appBarMain(BuildContext context) {
-  return AppBar(backgroundColor: Colors.black54,
-    title: Text("Let's Chat",style: GoogleFonts.lato(fontSize: 20,color: Colors.deepOrangeAccent),)
-    
-  );
+  return AppBar(
+      centerTitle: true,
+      backgroundColor: Colors.black54,
+      title: Text(
+        "Firebook",
+        style: GoogleFonts.raleway(fontSize: 20, color: Colors.lightBlueAccent),
+      ));
 }
 
 InputDecoration textFieldDecoration(String hintText) {

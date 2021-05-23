@@ -43,7 +43,6 @@ class _SearchScreenState extends State<SearchScreen> {
     });
   }
 
-
   //create chat room, send user conversation screen, pushReplacement
   createChatRoomAndStartConversation(String username) {
     if (username != Constants.myName) {
@@ -60,16 +59,14 @@ class _SearchScreenState extends State<SearchScreen> {
               builder: (context) => ConversationScreen(chatRoomId)));
     } else {
       Fluttertoast.showToast(
-        msg: "You can not chat with yourself",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 16.0
-    );
+          msg: "You can not chat with yourself",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
       Navigator.pop(context);
-      
     }
   }
 
@@ -151,10 +148,8 @@ class _SearchScreenState extends State<SearchScreen> {
                         height: 40,
                         width: 40,
                         decoration: BoxDecoration(
-                            gradient: LinearGradient(colors: [
-                              Colors.orange,
-                              Colors.orangeAccent
-                            ]),
+                            gradient: LinearGradient(
+                                colors: [Colors.lightBlue, Colors.lightBlueAccent]),
                             borderRadius: BorderRadius.circular(40)),
                         padding: EdgeInsets.all(10),
                         child: Image.asset("assets/images/search_white.png")),

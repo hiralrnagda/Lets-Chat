@@ -89,7 +89,7 @@ class _SigninState extends State<Signin> {
                       TextFormField(
                         validator: (val) {
                           return val.length < 6
-                              ? "Please provide password of 6+char in length"
+                              ? "Please provide password of 6+ char in length"
                               : null;
                         },
                         controller: passwordTextEditingController,
@@ -115,10 +115,8 @@ class _SigninState extends State<Signin> {
                     width: MediaQuery.of(context).size.width,
                     padding: EdgeInsets.symmetric(vertical: 16),
                     decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: [
-                          Colors.orange,
-                          Colors.orangeAccent
-                        ]),
+                        gradient: LinearGradient(
+                            colors: [Colors.purple, Colors.purpleAccent]),
                         borderRadius: BorderRadius.circular(30)),
                     child: Text(
                       "Sign In",
@@ -126,7 +124,6 @@ class _SigninState extends State<Signin> {
                     ),
                   ),
                 ),
-               
                 SizedBox(
                   height: 16,
                 ),

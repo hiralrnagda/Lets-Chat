@@ -2,7 +2,6 @@ import 'package:chat_app/helper/helperfunctions.dart';
 import 'package:chat_app/services/auth.dart';
 import 'package:chat_app/services/database.dart';
 import 'package:chat_app/views/chatRoomScreen.dart';
-
 import 'package:flutter/material.dart';
 import 'package:chat_app/widgets/widget.dart';
 
@@ -132,17 +131,16 @@ class _SignupState extends State<Signup> {
                           padding: EdgeInsets.symmetric(vertical: 16),
                           decoration: BoxDecoration(
                               gradient: LinearGradient(colors: [
-                                Colors.orange,
-                                Colors.orangeAccent
+                                Colors.lightBlue,
+                                Colors.lightBlueAccent
                               ]),
                               borderRadius: BorderRadius.circular(30)),
                           child: Text(
                             "Sign Up",
-                            style: TextStyle(color: Colors.white, fontSize: 17),
+                            style: TextStyle(color: Colors.black, fontSize: 17),
                           ),
                         ),
                       ),
-                      
                       SizedBox(
                         height: 16,
                       ),
@@ -172,7 +170,27 @@ class _SignupState extends State<Signup> {
                       ),
                       SizedBox(
                         height: 50,
-                      )
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          authMethods.signInWithGoogle();
+                        },
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.symmetric(vertical: 16),
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(colors: [
+                                Colors.lightBlue,
+                                Colors.lightBlueAccent
+                              ]),
+                              borderRadius: BorderRadius.circular(30)),
+                          child: Text(
+                            "Google SignIn",
+                            style: TextStyle(color: Colors.white, fontSize: 17),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
