@@ -5,6 +5,7 @@ import 'package:chat_app/widgets/widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:page_transition/page_transition.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -55,8 +56,9 @@ class _SearchScreenState extends State<SearchScreen> {
       DatabaseMethods().createChatRoom(chatRoomId, chatRoomMap);
       Navigator.push(
           context,
-          MaterialPageRoute(
-              builder: (context) => ConversationScreen(chatRoomId)));
+          PageTransition(
+              child: ConversationScreen(chatRoomId),
+              type: PageTransitionType.bottomToTop));
     } else {
       Fluttertoast.showToast(
           msg: "You can not chat with yourself",
@@ -73,7 +75,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget searchTile({String userName, String userEmail}) {
     return SingleChildScrollView(
       child: Container(
-        color: Colors.orangeAccent.shade100,
+        color: Colors.lightBlueAccent.shade100,
         padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         child: Row(
           children: [
@@ -82,11 +84,11 @@ class _SearchScreenState extends State<SearchScreen> {
               children: [
                 Text(
                   userName,
-                  style: mediumTextStyle(),
+                  style: TextStyle(color: Colors.black, fontSize: 17),
                 ),
                 Text(
                   userEmail,
-                  style: mediumTextStyle(),
+                  style: TextStyle(color: Colors.black, fontSize: 17),
                 ),
               ],
             ),
@@ -97,12 +99,12 @@ class _SearchScreenState extends State<SearchScreen> {
               },
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.orangeAccent,
+                    color: Colors.blue,
                     borderRadius: BorderRadius.circular(30)),
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: Text(
                   "Message",
-                  style: mediumTextStyle(),
+                  style: TextStyle(color: Colors.black, fontSize: 17),
                 ),
               ),
             )
@@ -148,8 +150,10 @@ class _SearchScreenState extends State<SearchScreen> {
                         height: 40,
                         width: 40,
                         decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                colors: [Colors.lightBlue, Colors.lightBlueAccent]),
+                            gradient: LinearGradient(colors: [
+                              Colors.lightBlue,
+                              Colors.lightBlueAccent
+                            ]),
                             borderRadius: BorderRadius.circular(40)),
                         padding: EdgeInsets.all(10),
                         child: Image.asset("assets/images/search_white.png")),
@@ -157,7 +161,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ],
               ),
             ),
-            searchList(),
+            searchList() 
           ],
         ),
       ),

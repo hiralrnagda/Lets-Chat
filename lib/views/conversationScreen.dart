@@ -24,6 +24,8 @@ class _ConversationScreenState extends State<ConversationScreen> {
         builder: (context, snapshot) {
           return snapshot.hasData
               ? ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  shrinkWrap: true,
                   itemCount: snapshot.data.documents.length,
                   itemBuilder: (context, index) {
                     return MessageTile(
@@ -70,9 +72,11 @@ class _ConversationScreenState extends State<ConversationScreen> {
         backgroundColor: Colors.black54,
         title: Text(
           "Firebook",
-          style: GoogleFonts.raleway(fontSize: 20, color: Colors.lightBlue
+          style: GoogleFonts.raleway(
+              fontSize: 40,
+              color: Colors.lightBlue,
+              fontWeight: FontWeight.bold),
         ),
-      ),
       ),
       body: Container(
         child: Stack(
@@ -83,7 +87,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
               alignment: Alignment.bottomCenter,
               child: Container(
                 color: Colors.black12,
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 15),
                 child: Row(
                   children: [
                     Expanded(
@@ -140,29 +144,20 @@ class MessageTile extends StatelessWidget {
       padding: EdgeInsets.only(
           top: 8,
           bottom: 8,
-          right: isSendByMe ? 0 : 15,
-          left: isSendByMe ? 15 : 0),
-      alignment: isSendByMe ? Alignment.centerLeft : Alignment.centerRight,
+          left: isSendByMe ? 0 : 10,
+          right: isSendByMe ? 10 : 0),
+      alignment: isSendByMe ? Alignment.topLeft : Alignment.topRight,
       child: Container(
-        //alignment: isSendByMe ? Alignment.centerRight : Alignment.centerLeft,
         margin:
-            isSendByMe ? EdgeInsets.only(right: 30) : EdgeInsets.only(left: 30),
-        padding: EdgeInsets.only(top: 17, bottom: 17, left: 20, right: 20),
+            isSendByMe ? EdgeInsets.only(left: 10) : EdgeInsets.only(right: 10),
+        padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: isSendByMe
-                ? [Colors.orangeAccent, Colors.deepOrange]
-                : [Colors.orangeAccent.shade100, Colors.deepOrange.shade100],
+                ? [Colors.lightBlueAccent.shade100, Colors.lightBlue.shade100]
+                : [Colors.lightBlueAccent, Colors.lightBlue],
           ),
-          borderRadius: isSendByMe
-              ? BorderRadius.only(
-                  topLeft: Radius.circular(23),
-                  topRight: Radius.circular(23),
-                  bottomRight: Radius.circular(23))
-              : BorderRadius.only(
-                  topLeft: Radius.circular(23),
-                  topRight: Radius.circular(23),
-                  bottomLeft: Radius.circular(23)),
+          borderRadius: BorderRadius.circular(12),
         ),
         child: Text(
           message,

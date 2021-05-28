@@ -4,6 +4,7 @@ import 'package:chat_app/services/database.dart';
 import 'package:chat_app/views/chatRoomScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:chat_app/widgets/widget.dart';
+import 'package:page_transition/page_transition.dart';
 
 class Signup extends StatefulWidget {
   final Function toggle;
@@ -56,7 +57,9 @@ class _SignupState extends State<Signup> {
       databaseMethods.uploadUserInfo(userInfoMap);
       HelperFunctions.saveuserLoggedInSharedPreference(true);
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => ChatRoom()));
+          context,
+          PageTransition(
+              child: ChatRoom(), type: PageTransitionType.bottomToTop));
     });
   }
 
@@ -72,7 +75,7 @@ class _SignupState extends State<Signup> {
           : SingleChildScrollView(
               child: Container(
                 height: MediaQuery.of(context).size.height - 40,
-                alignment: Alignment.bottomCenter,
+                alignment: Alignment.center,
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 24),
                   child: Column(
@@ -169,7 +172,7 @@ class _SignupState extends State<Signup> {
                         ],
                       ),
                       SizedBox(
-                        height: 50,
+                        height: 20,
                       ),
                       GestureDetector(
                         onTap: () {
@@ -187,7 +190,7 @@ class _SignupState extends State<Signup> {
                               borderRadius: BorderRadius.circular(30)),
                           child: Text(
                             "Google SignIn",
-                            style: TextStyle(color: Colors.white, fontSize: 17),
+                            style: TextStyle(color: Colors.black, fontSize: 17),
                           ),
                         ),
                       ),

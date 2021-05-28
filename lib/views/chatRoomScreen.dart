@@ -7,6 +7,7 @@ import 'package:chat_app/views/conversationScreen.dart';
 import 'package:chat_app/views/search.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 
 class ChatRoom extends StatefulWidget {
   @override
@@ -71,15 +72,19 @@ class _ChatRoomState extends State<ChatRoom> {
         backgroundColor: Colors.black54,
         title: Text(
           "Firebook",
-          style: GoogleFonts.raleway(fontSize: 20, color: Colors.lightBlueAccent),
+          style:
+              GoogleFonts.raleway(fontSize: 40, color: Colors.lightBlueAccent,fontWeight: FontWeight.bold,),
         ),
         elevation: 0.0,
         actions: [
           GestureDetector(
             onTap: () {
               authMethods.signOut();
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => Authenticate()));
+              Navigator.pushReplacement(
+                  context,
+                  PageTransition(
+                      child: Authenticate(),
+                      type: PageTransitionType.bottomToTop));
             },
             child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 16),
@@ -92,7 +97,10 @@ class _ChatRoomState extends State<ChatRoom> {
         backgroundColor: Colors.lightBlue,
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => SearchScreen()));
+              context,
+              PageTransition(
+                  child: SearchScreen(), 
+                  type: PageTransitionType.bottomToTop));
         },
         child: Icon(Icons.search),
       ),
@@ -110,17 +118,18 @@ class ChatRoomTile extends StatelessWidget {
       onTap: () {
         Navigator.push(
             context,
-            MaterialPageRoute(
-                builder: (context) => ConversationScreen(chatRoomId)));
+            PageTransition(
+                child: ConversationScreen(chatRoomId),
+                type: PageTransitionType.bottomToTop));
       },
       child: Container(
-        color: Colors.orangeAccent.shade100,
+        color: Colors.lightBlueAccent.shade100,
         padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         child: Row(
           children: [
             CircleAvatar(
               radius: 20,
-              backgroundColor: Colors.lightBlue,
+              backgroundColor: Colors.white,
               child: Text(
                 "${userName.substring(0, 1).toUpperCase()}",
                 textAlign: TextAlign.center,
@@ -131,9 +140,9 @@ class ChatRoomTile extends StatelessWidget {
               width: 8,
             ),
             Text(
-              userName,
+              userName.toUpperCase(),
               textAlign: TextAlign.start,
-              style: TextStyle(color: Colors.black, fontSize: 16),
+              style: TextStyle(color: Colors.black, fontSize: 16,fontWeight: FontWeight.bold),
             ),
             SizedBox(
               width: 100,

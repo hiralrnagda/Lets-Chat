@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="Let's Chat"
+        android:label="Firebook"
         android:icon="@mipmap/chat">
         <activity
             android:name=".MainActivity"

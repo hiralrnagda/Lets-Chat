@@ -19,6 +19,7 @@ dependencies:
   shared_preferences_windows: ^0.0.1+1
   google_sign_in:
   fluttertoast:
+  page_transition: "^2.0.2"
 
 dev_dependencies:
   flutter_test:

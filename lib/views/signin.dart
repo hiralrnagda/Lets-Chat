@@ -5,6 +5,7 @@ import 'package:chat_app/views/chatRoomScreen.dart';
 import 'package:chat_app/widgets/widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class Signin extends StatefulWidget {
   final Function toggle;
@@ -50,7 +51,9 @@ class _SigninState extends State<Signin> {
         if (val != null) {
           HelperFunctions.saveuserLoggedInSharedPreference(true);
           Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => ChatRoom()));
+              context,
+              PageTransition(
+                  child: ChatRoom(), type: PageTransitionType.bottomToTop));
         }
       });
     }
@@ -64,7 +67,7 @@ class _SigninState extends State<Signin> {
       body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height - 50,
-          alignment: Alignment.bottomCenter,
+          alignment: Alignment.center,
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 24),
             child: Column(
@@ -116,7 +119,7 @@ class _SigninState extends State<Signin> {
                     padding: EdgeInsets.symmetric(vertical: 16),
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
-                            colors: [Colors.purple, Colors.purpleAccent]),
+                            colors: [Colors.lightBlue, Colors.lightBlueAccent]),
                         borderRadius: BorderRadius.circular(30)),
                     child: Text(
                       "Sign In",

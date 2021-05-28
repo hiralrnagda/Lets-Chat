@@ -7,7 +7,7 @@ Widget appBarMain(BuildContext context) {
       backgroundColor: Colors.black54,
       title: Text(
         "Firebook",
-        style: GoogleFonts.raleway(fontSize: 20, color: Colors.lightBlueAccent),
+        style: GoogleFonts.raleway(fontSize: 40, color: Colors.lightBlueAccent,fontWeight: FontWeight.bold),
       ));
 }
 
